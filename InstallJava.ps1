@@ -2,13 +2,13 @@
 $javaVersions = Get-WmiObject -Class Win32_Product -Filter "Name like 'Java % Update %'" 
 $JavaPath = "\\usblns-file2\ITStore\SoftwareInstalls\Java\PSScript\Java Versions"
 $localPath = "c:\ITInstall"
-$bit32 = ""
-$bit64 = ""
+$upToDate64 = $false
+$upToDate32 = $false
+
 $bit64Version = ""
 $bit32Version = ""
 $javaBit = ""
-$upToDate64 = ""
-$upToDate32 = ""
+
 
 #check if 64 bit or 32
 foreach($javaBit in $javaVersions) {
@@ -20,7 +20,7 @@ foreach($javaBit in $javaVersions) {
             continue
         }
         $javaBit.Uninstall()
-        $bit64 = $true
+        
     }    
     if(!$javaBit.Name.Contains("(64-bit)")) {
         $bit32Version = $javaBit.version
@@ -29,7 +29,7 @@ foreach($javaBit in $javaVersions) {
             continue
         }
         $javaBit.Uninstall()
-        $bit32 = $true
+       
     }
 
 }
@@ -45,14 +45,6 @@ if(!$upToDate32){
     Start-Process (Get-ChildItem "$localPath\Java32*.exe") -ArgumentList /s -wait
 }
 
-
-
-
-
-$bit64
-$bit32
-$bit32Version
-$bit64Version
 
 
 
