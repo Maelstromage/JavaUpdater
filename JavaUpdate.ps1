@@ -27,14 +27,14 @@ Function Get-JavaDownload {
         Invoke-WebRequest -uri $javaBit -OutFile $JavaPath
         $version = (get-item $JavaPath).VersionInfo.fileversion | Out-String
         $version = "java$bit." + $version.trim() + ".exe"
-        Copy-Item $JavaPath "$rootDir\Javatest\$version"
+        Copy-Item $JavaPath "$rootDir\Java Versions\$version"
     }else{Write-Output "$javaPath already Exists!" }
 
 }
 
 
 $java = (Invoke-WebRequest -uri https://java.com/en/download/manual.jsp)
-$rootDir = "c:"
+$rootDir = "\\usblns-file2\itstore\SoftwareInstalls\Java\PSScript"
 
 
 $Java64Bit = Get-JavaURL -java $java -JavaType "Download Java software for windows (64-bit)"
