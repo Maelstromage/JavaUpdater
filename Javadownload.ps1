@@ -41,8 +41,8 @@ $Java64Bit = Get-JavaURL -java $java -JavaType "Download Java software for windo
 $Java32Bit = Get-JavaURL -java $java -JavaType "Download Java software for windows Offline"
 
 #Gets the Java Bundle name to be saved and compared to later
-$java64Bundle = (Get-JavaBundleName -URL $Java64)
-$java32Bundle = (Get-JavaBundleName -URL $Java32)
+$java64Bundle = (Get-JavaBundleName -URL $Java64Bit)
+$java32Bundle = (Get-JavaBundleName -URL $Java32Bit)
 
 #sets the name of the file to be named after the bundle for comparison later
 $Java32Path = "$rootDir\java32.$java32Bundle.exe"
