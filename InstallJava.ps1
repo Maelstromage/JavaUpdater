@@ -35,7 +35,7 @@ foreach($javaBit in $javaVersions) {
         $javaBit.Uninstall() >> "$localPath\log.txt"
         
     }    
-    if(!$javaBit.Name.Contains("(64-bit)")) {
+    if(!$javaBit.Name.Contains("offline")) {
         $bit32Version = $javaBit.version
         Write-Output "Java Version Found: $bit32Version" >> "$localPath\log.txt"
         if([System.IO.File]::Exists("$JavaPath\Java32.$bit32Version.exe")){
